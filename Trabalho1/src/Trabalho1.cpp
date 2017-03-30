@@ -12,7 +12,7 @@
 #include <ctype.h>
 using namespace std;
 
-struct linha{
+struct Linha{
 	int ID;
 	int frequencia;
 	string paragens[];
@@ -20,18 +20,27 @@ struct linha{
 
 };
 
-struct condutor{
+struct Condutor{
 	string nome;
 	int ID;
 	int horasMaxTurno;
 	int horasMaxSemana;
 	int horasDescansoTurno;
 };
+void setNome(string n,Condutor c);
+void setID(int I);
+void sethorasMaxTurno(int hMT);
+void sethorasMaxSemana(int hMS);
+void sethorasDescansoTurnoDT(int hDT);
+
+void setNome(string n,Condutor c){
+	c.nome=n;
+}
 
 int main() {
-	condutor Manuel;
-	Manuel.ID=500;
-	Manuel.nome="Manuel Silva";
-	cout << Manuel.nome << " " << Manuel.ID << endl;
+	Condutor Manuel;
+	setNome("Manuel Silva",Manuel);
+
+	cout << Manuel.nome  << endl;
 	return 0;
 }
