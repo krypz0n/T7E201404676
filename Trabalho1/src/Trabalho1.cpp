@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : Trabalho1.cpp
-// Author      : Nuno Silva
+// Author      : Nuno Silva Turma 7 up201404676
 // Version     :
 // Copyright   : no copyrino
-// Description : Hello World in C++, Ansi-style
+// Description : Trabalho 1
 //============================================================================
 
 #include <iostream>
@@ -12,8 +12,26 @@
 #include <ctype.h>
 using namespace std;
 
+struct linha{
+	int ID;
+	int frequencia;
+	string paragens[];
+	int temposParagens[];
+
+};
+
+struct condutor{
+	string nome;
+	int ID;
+	int horasMaxTurno;
+	int horasMaxSemana;
+	int horasDescansoTurno;
+};
 
 int main() {
-	cout << "faking rash b" << endl; // prints faking rash b
+	condutor Manuel;
+	Manuel.ID=500;
+	Manuel.nome="Manuel Silva";
+	cout << Manuel.nome << " " << Manuel.ID << endl;
 	return 0;
 }
