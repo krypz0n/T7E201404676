@@ -27,7 +27,7 @@ int main() {
 	Manuel.setNome("Manuel SIlva");
 	asdf.setID(904);
 	string s=Manuel.getNome();
-	int t=asdf.getID;
+	int t=asdf.getID();
 	cout << s << " conduz na " << t <<endl;
 	return 0;
 }
