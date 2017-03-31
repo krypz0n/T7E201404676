@@ -21,10 +21,10 @@ using namespace std;
 
 
 
-int main() {
+int main() { //fazer funçoes pa ler linhas e condutores txt
 	Linha asdf;
 	Condutor Manuel;
-	Manuel.setNome("Manuel SIlva");
+	Manuel.setNome("Manuel Silva");
 	asdf.setID(904);
 	string s=Manuel.getNome();
 	int t=asdf.getID();
