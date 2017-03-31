@@ -6,13 +6,17 @@
 // Description : Trabalho 1
 //============================================================================
 
+#include "tp1.h"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <ctype.h>
+
 using namespace std;
 
-struct Linha{
+
+class Linha{
+private:
 	int ID;
 	int frequencia;
 	string paragens[];
@@ -20,27 +24,41 @@ struct Linha{
 
 };
 
-struct Condutor{
+class Condutor{
+private:
 	string nome;
 	int ID;
 	int horasMaxTurno;
 	int horasMaxSemana;
 	int horasDescansoTurno;
-};
-void setNome(string n,Condutor c);
-void setID(int I);
-void sethorasMaxTurno(int hMT);
-void sethorasMaxSemana(int hMS);
-void sethorasDescansoTurnoDT(int hDT);
 
-void setNome(string n,Condutor c){
-	c.nome=n;
-}
+public:
+									//get's
+	string getNome(){return nome;}
+	int getID() {return ID;}
+	int getHorasMaxTurno(){return horasMaxTurno;}
+	int getHorasMaxSemana() {return horasMaxSemana;}
+	int gethorasDescansoTurno() {return horasDescansoTurno;}
+
+									//set's
+	void setNome(string s) {nome=s;}
+	void setID(int id) {ID=id;}
+	void setHorasMaxTurno(int hMT) {horasMaxTurno=hMT;}
+	void setHorasMaxSemana(int hMS) {horasMaxSemana=hMS;}
+	void setHorasDescansoTurno(int hDT) {horasDescansoTurno=hDT;}
+
+
+};
+
+
+
 
 int main() {
+	Condutor Condutores[50];
 	Condutor Manuel;
-	setNome("Manuel Silva",Manuel);
-
-	cout << Manuel.nome  << endl;
+	Manuel.setNome("Manuel Silva");
+	Condutores[0]=Manuel;
+	string s=Condutores[0].getNome();
+	cout << s <<endl;
 	return 0;
 }
