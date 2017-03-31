@@ -19,9 +19,20 @@ class Linha{
 private:
 	int ID;
 	int frequencia;
-	string paragens[];
-	int temposParagens[];
+	string paragem[];
+	int temposParagem[];
 
+public:
+									//get's
+	int getID() {return ID;}
+	int getFrequencia() {return frequencia;}
+	int getParagens() {return paragem;} //usar return paragens ou paragens[x]?
+	int getTemposParagem() {return temposParagem;}
+									//set's
+	void setID(int id) {ID=id;}
+	void setFrequencia(int f) {frequencia=f;}
+	void setParagens(string s,int x) {	paragem[x]=s;}
+	void setTemposParagem(int t, int x){temposParagem[x]=t;}
 };
 
 class Condutor{
