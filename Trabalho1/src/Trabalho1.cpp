@@ -13,10 +13,16 @@
 #include <vector>
 #include <ctype.h>
 #include <fstream>
+#include <sstream>
 
 using namespace std; //decidir se queremos usar structs ou classes
 
-
+bool isNumeric(const std::string& s)
+{
+	std::string::const_iterator it =s.begin();
+	while(it!= s.end() && std::isdigit(*it)) ++it;
+	return !s.empty() && it==s.end();
+}
 
 void outFileTest(){
 	ofstream testFile(".\\Files\\testfile.txt");
@@ -36,8 +42,53 @@ void outFileTest(){
 		testFile.close();
 	}
 }
-void readCondutor(string filepath){
-	char letter;
+void readLinha(string filepath)
+{
+
+}
+void newLinha(string nomeLinha) //files com tamanho alteravel, ver size e subtrair tamanhO?
+{
+
+}
+bool checkfiletype(string file){ //return será true se for condutor ou false se for linha
+	int size=file.size();
+	string temps;
+	string emptystring;
+	int z,i=0;
+	while(1)			//ver melhor maneira de fazer isto
+	{
+		if(file[i]==';')
+		{
+			z=i;
+//			cout << "; encontrado" <<endl;
+			break;
+		}
+
+		i++;
+		if(i==99)
+		{
+			cout << "File format not compatible" << endl;
+			return false;
+		}
+	}
+	for (z=z+2; file[z]!=';';z++)
+	{
+		temps=temps+file[z];
+	}
+	if(isNumeric(temps))
+	{
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+void newCondutor(string info) //files sempre com tamanho constante
+{
+
+	cout << info << endl;
+}
+void readfile(string filepath){
 	string sletter;
 	ifstream openedFile;
 	openedFile.open(filepath);
@@ -47,42 +98,37 @@ void readCondutor(string filepath){
 	}
 	else
 	{
+		cout << "Ficheiro encontrado, lendo.." << endl;
 		for (int i=0;!openedFile.eof();i++) //necessario isto ou size?
 		{
 			getline(openedFile,sletter);
-			newCondutor(sletter);
+//			cout <<sletter<< endl;
+			if(checkfiletype(sletter))
+			{
+				cout << "file checkada, condutor" << endl;
+				newCondutor(sletter);
+			}
+			else
+			{
+				cout << "file checkada, linha" << endl;
+				newLinha(sletter);
+			}
+//			cout << "numero iteraçoes i: "<< i <<endl;
 		}
-		cout <<sletter<< endl;
+
 		openedFile.close();
 	}
 
 
 }
 
-void newLinha(/*string nomeLinha*/) //files com tamanho alteravel, ver size e subtrair tamanhO?
-{
-	Linha nomeLinha;
-
-}
-
-void newCondutor(string info) //files sempre com tamanho constante
-{
 
 
-}
 
 int main() { //fazer funçoes pa ler linhas e condutores txt
 	Linha linhas[50];
 	Condutor condutores[50];
-	readCondutor("..\\Trabalho1\\Files\\condutores.txt");
-//	outFileTest();
-
-	//	asdf[0]=asd;
-	//	Condutor Manuel;
-	//	Manuel.setNome("Manuel Silva");
-	//	asdf[0].setID(904);
-	//	string s=Manuel.getNome();
-	//	int t=asdf[0].getID();
-	//	cout << s << " conduz na " << t <<endl;
+	readfile("..\\Trabalho1\\Files\\condutores.txt");
+	//	outFileTest();
 	return 0;
 }
