@@ -34,6 +34,9 @@ public:
 	void setHorasMaxSemana(int hMS) {horasMaxSemana=hMS;}
 	void setHorasDescansoTurno(int hDT) {horasDescansoTurno=hDT;}
 
+	//construtor
+	//para acabar
+
 
 };
 
