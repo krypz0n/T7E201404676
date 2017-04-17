@@ -24,6 +24,7 @@ bool isNumeric(const std::string& s)
 	return !s.empty() && it==s.end();
 }
 
+
 void outFileTest(){
 	ofstream testFile(".\\Files\\testfile.txt");
 	//	ofstream testFile("C:\\Users\\AristidesMini\\Desktop\\FEUP\\1o ano\\prog\\eclipsec++\\git\\Trabalho1\\Files\\testfile.txt");
@@ -51,7 +52,7 @@ void newLinha(string nomeLinha) //files com tamanho alteravel, ver size e subtra
 
 }
 bool checkfiletype(string file){ //return será true se for condutor ou false se for linha
-	int size=file.size();
+	//int size=file.size();
 	string temps;
 	string emptystring;
 	int z,i=0;
@@ -62,6 +63,10 @@ bool checkfiletype(string file){ //return será true se for condutor ou false se 
 			z=i;
 //			cout << "; encontrado" <<endl;
 			break;
+		}
+		if(file[i]==',')
+		{
+			return false;
 		}
 
 		i++;
@@ -88,6 +93,8 @@ void newCondutor(string info) //files sempre com tamanho constante
 
 	cout << info << endl;
 }
+
+
 void readfile(string filepath){
 	string sletter;
 	ifstream openedFile;
@@ -129,6 +136,8 @@ int main() { //fazer funçoes pa ler linhas e condutores txt
 	Linha linhas[50];
 	Condutor condutores[50];
 	readfile("..\\Trabalho1\\Files\\condutores.txt");
+	//readfile("..\\Trabalho1\\Files\\linhas.txt");  //falta ver como fazer isto
+
 	//	outFileTest();
 	return 0;
 }
