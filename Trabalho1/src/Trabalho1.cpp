@@ -51,13 +51,24 @@ void newLinha(string nomeLinha) //files com tamanho alteravel, ver size e subtra
 {
 
 }
-bool checkfiletype(string file){ //return será true se for condutor ou false se for linha
+/*bool checkfiletype(string file){ //return será true se for condutor ou false se for linha // não é necessario isto pois condutors/linhas ja estao divididos
 	//int size=file.size();
-	string temps;
+	string temps;  		//dentro da checkfile a string é uma compilaçao de 1's e 0's
 	string emptystring;
 	int z,i=0;
+
+	int h=0;
+	cout <<"file dentro da readfile:"<< endl;
+
+				while(h<99)
+				{
+					cout << file[i] << endl;
+
+					h++;
+				}
 	while(1)			//ver melhor maneira de fazer isto
 	{
+		cout << file[i] <<endl;
 		if(file[i]==';')
 		{
 			z=i;
@@ -87,11 +98,39 @@ bool checkfiletype(string file){ //return será true se for condutor ou false se 
 	else{
 		return true;
 	}
-}
-void newCondutor(string info) //files sempre com tamanho constante
+}*/
+void newCondutor(string info, int nbr) //files sempre com tamanho constante
 {
-
+	Condutor a;
 	cout << info << endl;
+	string temp= " ", empty=" ";
+	int id,seminbr=0;
+	for(unsigned int i=0; i<info.size();i++)
+	{
+
+		if(info[i]==';')
+		{
+			switch(seminbr)
+			{
+			case 0:
+				id=atoi(temp.c_str());
+				a.setID(id);
+			break;
+			case 1:
+
+			}
+
+
+			id=atoi(temp.c_str());
+			a.setID(id);
+		}
+
+
+		temp=temp+info[i];
+		i++;
+
+	}
+
 }
 
 
@@ -108,19 +147,9 @@ void readfile(string filepath){
 		cout << "Ficheiro encontrado, lendo.." << endl;
 		for (int i=0;!openedFile.eof();i++) //necessario isto ou size?
 		{
-			getline(openedFile,sletter);
+			getline(openedFile,sletter); //linha a linha
 //			cout <<sletter<< endl;
-			if(checkfiletype(sletter))
-			{
-				cout << "file checkada, condutor" << endl;
-				newCondutor(sletter);
-			}
-			else
-			{
-				cout << "file checkada, linha" << endl;
-				newLinha(sletter);
-			}
-//			cout << "numero iteraçoes i: "<< i <<endl;
+			newCondutor(sletter,i);
 		}
 
 		openedFile.close();
