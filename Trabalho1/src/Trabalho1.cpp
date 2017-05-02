@@ -103,33 +103,59 @@ void newCondutor(string info, int nbr) //files sempre com tamanho constante
 {
 	Condutor a;
 	cout << info << endl;
-	string temp= " ", empty=" ";
+	string temp=	 " ", empty="",nome= " ";
 	int id,seminbr=0;
-	for(unsigned int i=0; i<info.size();i++)
+	for(unsigned int i=0; i<(info.size()+1);i++)
 	{
 
-		if(info[i]==';')
+		if(info[i]==';'|| i==info.size())
 		{
 			switch(seminbr)
 			{
-			case 0:
+			case 0:			//ID
 				id=atoi(temp.c_str());
 				a.setID(id);
-			break;
-			case 1:
-
+				temp=empty;
+				seminbr++;
+				i=i+2;
+				break;
+			case 1:			//nome
+				nome=temp;
+				a.setNome(nome);
+				temp=empty;
+				seminbr++;
+				i=i+2;
+				break;
+			case 2:			//hMT
+				id=atoi(temp.c_str());
+				a.setHorasMaxTurno(id);
+				temp=empty;
+				seminbr++;
+				i=i+2;
+				break;
+			case 3:			//hMS
+				id=atoi(temp.c_str());
+				a.setHorasMaxSemana(id);
+				temp=empty;
+				seminbr++;
+				i=i+2;
+				break;
+			case 4:			//hDT
+				id=atoi(temp.c_str());
+				a.setHorasDescansoTurno(id);
+				temp=empty;
+				seminbr++;
+				i++;
+				break;
 			}
-
-
-			id=atoi(temp.c_str());
-			a.setID(id);
 		}
 
 
 		temp=temp+info[i];
-		i++;
+		cout << temp << endl;
 
 	}
+	cout << a.getID()<< " "<< a.getNome() << " "<< a.getHorasMaxTurno()<< " "<<a.getHorasMaxSemana()<< " "<<a.gethorasDescansoTurno()<< endl;
 
 }
 
@@ -148,7 +174,7 @@ void readfile(string filepath){
 		for (int i=0;!openedFile.eof();i++) //necessario isto ou size?
 		{
 			getline(openedFile,sletter); //linha a linha
-//			cout <<sletter<< endl;
+			//			cout <<sletter<< endl;
 			newCondutor(sletter,i);
 		}
 

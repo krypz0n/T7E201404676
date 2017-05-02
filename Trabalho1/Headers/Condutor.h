@@ -34,10 +34,11 @@ public:
 	void setHorasMaxSemana(int hMS) {horasMaxSemana=hMS;}
 	void setHorasDescansoTurno(int hDT) {horasDescansoTurno=hDT;}
 
+	void setAll(string s,int id,int hMT,int hMS,int hDT){ nome=s; ID=id; horasMaxTurno=hMT; horasMaxSemana=hMS; horasDescansoTurno=hDT;}
+
 	//construtor
 	//para acabar
-
-
+	//Condutor(string nome,int id,int hMT,int hMS,int hDT);
 };
 
 
