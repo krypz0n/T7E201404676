@@ -161,6 +161,7 @@ void newCondutor(string info, int nbr) //files sempre com tamanho constante
 
 
 void readfile(string filepath){
+	Condutor a,b,c,d,e;
 	string sletter;
 	ifstream openedFile;
 	openedFile.open(filepath);
